@@ -23,6 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Catalysis_the_app.BO\Catalysis_the_app.BO.csproj" />
     <ProjectReference Include="..\Catalysis_the_app.DAL\Catalysis_the_app.DAL.csproj" />
   </ItemGroup>
 

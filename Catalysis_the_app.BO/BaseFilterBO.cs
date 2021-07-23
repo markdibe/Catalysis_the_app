@@ -13,7 +13,7 @@ namespace Catalysis_the_app.BO
    public class BaseFilterBO<T> where T:class
     {
         private readonly IGenericRepos<T> _generic;
-        public BaseFilterBO(IGenericRepos<T> generic, IMapper mapper) 
+        public BaseFilterBO(IGenericRepos<T> generic) 
         {
             _generic = generic;
         }

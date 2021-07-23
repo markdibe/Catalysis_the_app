@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 
 namespace Catalysis_the_app.BO.IServices
 {
+
+    //IGenerericRepos<CategoryVM>
     public interface ICategoryBO 
     {
 

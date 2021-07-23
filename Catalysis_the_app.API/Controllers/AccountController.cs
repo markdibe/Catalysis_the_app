@@ -31,10 +31,23 @@ namespace IdentityAPI.Controllers
             _roleManager = roleManager;
         }
 
+        private async Task CheckRoles()
+        {
+            if (!await _roleManager.RoleExistsAsync("User"))
+            {
+                await _roleManager.CreateAsync(new IdentityRole { Name = "User", NormalizedName = "USER" });
+            }
+            if (!await _roleManager.RoleExistsAsync("ADMIN"))
+            {
+                await _roleManager.CreateAsync(new IdentityRole { Name = "Admin", NormalizedName = "ADMIN" });
+            }
+        }
+
         [HttpPost]
         [AllowAnonymous]
         public async Task<IActionResult> Register([FromBody] RegisterVM model)
         {
+            await CheckRoles();
             if (!ModelState.IsValid)
             {
                 return StatusCode(StatusCodes.Status406NotAcceptable);
@@ -97,6 +110,7 @@ namespace IdentityAPI.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Login(LoginVM model)
         {
+            await CheckRoles();
             var user = (ApplicationUser)await _userManager.FindByEmailAsync(model.Email);
             if (user == null)
             {

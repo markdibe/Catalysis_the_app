@@ -18,6 +18,5 @@ namespace Catalysis_the_app.DAL.Services
         Task Update(T entity);
 
         Task Delete(int id);
-
     }
 }

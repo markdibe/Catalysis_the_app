@@ -1,4 +1,11 @@
+using Catalysis_the_app.BO;
+using Catalysis_the_app.BO.IServices;
+using Catalysis_the_app.BO.Services;
+using Catalysis_the_app.BO.ViewModels;
 using Catalysis_the_app.DAL;
+using Catalysis_the_app.DAL.Models;
+using Catalysis_the_app.DAL.Repos;
+using Catalysis_the_app.DAL.Services;
 using LearningIdentity.ViewModels;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -41,7 +48,9 @@ namespace LearningIdentity
                 option.ClientSecret = "yJaov2gvCaJIncBByLXcn2kQ";
                 option.CallbackPath = "/Account/ExternalLoginCallBack/";
             });
-
+            services.AddScoped<IGenericRepos<Category>, GenericRepos<Category>>();
+            services.AddScoped<BaseFilterBO<Category>>();
+            services.AddScoped<IBaseService<CategoryVM, Category>, BaseService<CategoryVM, Category>>();
             services.AddControllersWithViews();
 
         }

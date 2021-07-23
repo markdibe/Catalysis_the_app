@@ -75,9 +75,15 @@ namespace IdentityAPI
             var mapper = configurationMapper.CreateMapper();
             services.AddSingleton<IMapper>(mapper);
 
-            services.AddScoped<IBaseService<CategoryVM, Category>, BaseService<CategoryVM, Category>>();
+           
             services.AddScoped<IGenericRepos<Category>, GenericRepos<Category>>();
-            services.AddScoped<BaseFilterBO<CategoryVM>>();
+            services.AddScoped<BaseFilterBO<Category>>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            //services.AddScoped<IBaseService<CategoryVM, Category>, BaseService<CategoryVM, Category>>();
+            //services.AddScoped<IGenericRepos<Category>, GenericRepos<Category>>();
+            
+            //services.AddScoped<BaseFilterBO<Category>>();
+            
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

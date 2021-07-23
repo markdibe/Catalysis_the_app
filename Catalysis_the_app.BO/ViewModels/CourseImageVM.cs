@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Catalysis_the_app.BO.ViewModels
 {
-    class CourseImageVM
+  public   class CourseImageVM
     {
         public int CourseImageId { get; set; }
         [Required]
